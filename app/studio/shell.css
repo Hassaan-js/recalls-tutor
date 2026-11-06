@@ -1,0 +1,220 @@
+/* Content Studio shell, kept in its original study-notebook look and scoped to .studio-shell so the student
+   app's redesign (app/practice/practice.css) never reaches it. Vocabulary: a paper ground, ruled sections
+   (a 1px ink rule over each), hairline rows, Georgia for titles, stems and figures, the system sans for
+   everything you read and press. Each screen has one sheet: white paper with the 3px forest rule on top,
+   holding the thing the screen is for (the next step, the question, the score). Forest is the one action
+   and data hue; lime marks high-yield and the moment before a timer starts.
+   Grid: centred 1100px column, 12 columns with 16px gutters. */
+.app.studio-shell{font-family:var(--sans);--ground:#f6f5ef;--panel:#ebeee4;--panel-2:#e1e7d6;--card:#fffefa;--line:#d5dccb;--rule:#16261f;--ink:#16261f;--muted:#55635c;--accent:#183f32;--accent-2:#2d6150;--lime:#d8ec92;--lime-wash:#f2f6df;--good:#2f6b3e;--bad:#9b2c1f;
+ display:grid;grid-template-columns:240px minmax(0,1fr);min-height:100vh;background:var(--ground);color:var(--ink);font-size:15px;line-height:1.5;
+ accent-color:var(--accent);caret-color:var(--accent);scrollbar-color:#c3ccb8 transparent}
+.app.studio-shell ::selection{background:var(--lime);color:var(--accent)}
+.app.studio-shell :where(a){color:inherit;text-underline-offset:3px}
+.app.studio-shell :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* Shell: the sidebar sits on the ground, ruled from the canvas */
+.studio-shell .app-side{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;gap:28px;padding:22px 12px 18px;overflow-y:auto;border-right:1px solid var(--line)}
+.studio-shell .app-mark{display:flex;align-items:center;gap:2px;padding:0 10px;font-size:19px;letter-spacing:-.5px;text-decoration:none;font-weight:400}.studio-shell .app-mark b{font-weight:700}
+.studio-shell .app-mark span{display:inline-grid;place-items:center;width:28px;height:28px;margin-right:8px;border:1px solid var(--accent);color:var(--accent);font-family:var(--serif);font-size:21px;font-weight:400;padding-bottom:3px}
+.studio-shell .app-group ul{list-style:none;margin:0;padding:0}.studio-shell .app-group-label{font-size:13px;color:var(--muted);padding:0 10px;margin-bottom:6px}
+.studio-shell .app-group a{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:34px;margin:1px 0;padding:6px 10px;font-size:14px;text-decoration:none;border-radius:3px;transition:background .15s}
+.studio-shell .app-group a:hover{background:var(--panel)}.studio-shell .app-group a[aria-current=page]{background:var(--card);box-shadow:inset 0 0 0 1px var(--line);font-weight:600}
+.studio-shell .app-exams a[aria-current]{font-weight:600}.studio-shell .app-exams a[aria-current]::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:auto;order:2}
+.studio-shell .app-tag{font-size:12px;padding:1px 7px;border-radius:2px;background:var(--lime);color:var(--accent);font-weight:600}
+.studio-shell .app-user{margin-top:auto;display:grid;grid-template-columns:32px minmax(0,1fr);gap:4px 10px;align-items:center;padding:14px 10px 0;border-top:1px solid var(--line)}
+.studio-shell .app-avatar{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--panel-2);color:var(--accent);font-weight:700;font-size:13px}
+.studio-shell .app-who{min-width:0;display:flex;flex-direction:column}.studio-shell .app-who strong{font-size:14px;font-weight:600}.studio-shell .app-who span{font-size:12px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.studio-shell .app-user>div{grid-column:2}.studio-shell .app-user .auth-text-button{background:none;border:0;padding:4px 0;font:500 13px var(--sans);color:var(--muted);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.studio-shell .app-phone{display:none}
+.studio-shell .app-canvas{min-width:0;padding:36px 40px 80px}
+.studio-shell .app-column{width:min(1100px,100%);margin-inline:auto}
+
+/* Title row */
+.studio-shell .app-title{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:24px}
+.studio-shell .app-title h1,.studio-shell .app-greeting{font-family:var(--serif);font-weight:400;font-size:2.125rem;letter-spacing:-.02em;line-height:1.1;text-wrap:balance}
+.studio-shell .app-sub{color:var(--muted);font-size:15px;margin-top:8px;font-variant-numeric:tabular-nums}
+
+/* The sheet: the one surface per screen that holds what the screen is for */
+.studio-shell .sheet{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--accent);padding:28px 32px;min-width:0}
+.studio-shell .next{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px 40px;align-items:end;margin-bottom:44px}
+.studio-shell .next h2{font:400 1.875rem/1.15 var(--serif);letter-spacing:-.02em;text-wrap:balance;max-width:24ch}
+.studio-shell .next p{color:var(--muted);font-size:16px;margin-top:10px;max-width:58ch}
+.studio-shell .next-action .practice-button{min-height:48px;padding:12px 22px;font-size:15px}
+
+/* Ruled sections and hairline rows */
+.studio-shell .grid12{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px 40px;margin-top:44px;align-items:start}
+.studio-shell .span3{grid-column:span 3}.studio-shell .span4{grid-column:span 4}.studio-shell .span6{grid-column:span 6}.studio-shell .span8{grid-column:span 8}.studio-shell .span9{grid-column:span 9}.studio-shell .span12{grid-column:span 12}
+.studio-shell .panel,.studio-shell .practice-panel{border-top:1px solid var(--rule);padding-top:14px;min-width:0}
+.studio-shell .panel+.panel,.studio-shell .sheet+.panel{margin-top:0}
+.studio-shell .panel-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:6px}
+.studio-shell .panel-head h2,.studio-shell .practice-panel h2{font:400 1.25rem/1.3 var(--serif);letter-spacing:-.01em}.studio-shell .panel-head .count{font:400 14px var(--sans);color:var(--muted);margin-left:8px;font-variant-numeric:tabular-nums}
+.studio-shell .panel-head a{font-size:13px;color:var(--muted)}
+.studio-shell .rows{list-style:none;margin:0;padding:0}
+.studio-shell .rowcard{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:60px;padding:10px 0;border-bottom:1px solid var(--line);text-decoration:none}
+.studio-shell a.rowcard:hover strong{text-decoration:underline}
+.studio-shell .rowcard .main{display:flex;flex-direction:column;min-width:0}.studio-shell .rowcard .main strong{font-weight:600;font-size:15px}.studio-shell .rowcard .main span{font-size:13px;color:var(--muted)}
+.studio-shell .rowcard .num{font:400 20px var(--serif);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}.studio-shell .rowcard .num.is-open{font:600 14px var(--sans);color:var(--accent)}
+.studio-shell .empty{font-size:14px;color:var(--muted);padding:12px 0}
+.studio-shell .state{font-size:13px;color:var(--muted)}
+
+/* Other ways to practise: one ruled list, the action at the end of each row */
+.studio-shell .ways{list-style:none;margin:0;padding:0}
+.studio-shell .ways>li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 24px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line)}
+.studio-shell .way-main{display:flex;flex-direction:column;gap:2px;min-width:0}.studio-shell .way-main strong{font-size:15px;font-weight:600}.studio-shell .way-main>span{font-size:14px;color:var(--muted);max-width:64ch}
+.studio-shell .ways>li.is-arming{background:var(--lime-wash);margin-inline:-16px;padding-inline:16px;border-bottom-color:#c9d79a}
+.studio-shell .way-actions{display:flex;gap:8px;flex-wrap:wrap}
+.studio-shell .way-custom{display:block!important}.studio-shell .way-custom summary{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:center;cursor:pointer;list-style:none}.studio-shell .way-custom summary::-webkit-details-marker{display:none}
+.studio-shell .way-custom summary:hover .way-toggle{background:#d6dfc8}.studio-shell .way-custom details[open] .way-toggle{background:var(--card);box-shadow:inset 0 0 0 1px var(--line)}
+.studio-shell .way-custom details[open]>form{margin-top:20px;padding:24px;background:var(--card);border:1px solid var(--line)}
+
+/* Sitting coverage and topic bars: square bars, forest as the one data hue */
+.studio-shell .coverage,.studio-shell .topic-bars{list-style:none;margin:0;padding:0}
+.studio-shell .coverage li,.studio-shell .topic-bars li{display:grid;grid-template-columns:120px minmax(0,1fr) 72px;gap:14px;align-items:center;font-size:14px;padding:11px 0;border-bottom:1px solid var(--line)}
+.studio-shell .coverage .track,.studio-shell .topic-bars .track{height:6px;background:var(--panel-2);overflow:hidden}.studio-shell .coverage .fill,.studio-shell .topic-bars .fill{display:block;height:100%;background:var(--accent);min-width:2px}
+.studio-shell .coverage .n,.studio-shell .topic-bars .n{text-align:right;font-variant-numeric:tabular-nums;color:var(--muted)}.studio-shell .coverage .n b{font:400 17px var(--serif);color:var(--ink)}
+.studio-shell .topic-bars li{grid-template-columns:minmax(0,1fr) 2fr 72px}
+
+/* Controls */
+.studio-shell .practice-button,.studio-shell .btn-app{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;padding:9px 18px;border-radius:3px;border:0;background:var(--accent);color:#f6f5ef;font:600 14px var(--sans);text-decoration:none;cursor:pointer;transition:background .15s,transform .1s}
+.studio-shell .practice-button:hover,.studio-shell .btn-app:hover{background:var(--accent-2)}.studio-shell .practice-button:active,.studio-shell .btn-app:active{transform:translateY(1px)}.studio-shell .practice-button:disabled{background:#7d9288;cursor:progress}
+.studio-shell .practice-ghost,.studio-shell .btn-soft{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:9px 16px;border-radius:3px;border:0;background:var(--panel-2);color:var(--ink);font:500 14px var(--sans);text-decoration:none;cursor:pointer;white-space:nowrap;transition:background .15s}
+.studio-shell .practice-ghost:hover,.studio-shell .btn-soft:hover{background:#d6dfc8}.studio-shell .practice-ghost:disabled{opacity:.6;cursor:progress}.studio-shell .practice-ghost[aria-pressed=true]{background:var(--lime);color:var(--accent)}
+.studio-shell .practice-button-small{min-height:36px;padding:7px 14px}
+.studio-shell .practice-field{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600;margin-bottom:16px}
+.studio-shell .practice-field input,.studio-shell .practice-field select{min-height:42px;padding:8px 10px;border:1px solid #b8c1b2;border-radius:3px;background:var(--card);font:400 15px var(--sans);color:var(--ink);width:100%;min-width:0}
+.studio-shell .practice-choice,.studio-shell .practice-confidence{border:0;padding:0;margin:0 0 16px}.studio-shell .practice-choice legend,.studio-shell .practice-confidence legend{font-size:14px;font-weight:600;margin-bottom:8px}
+.studio-shell .practice-choice{display:grid;grid-template-columns:1fr 1fr;gap:8px}.studio-shell .practice-choice legend{grid-column:1/-1}
+.studio-shell .practice-choice label{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:3px;background:var(--ground);cursor:pointer}.studio-shell .practice-choice label:has(input:checked){background:var(--card);border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.studio-shell .practice-choice strong{display:block;font-size:14px}.studio-shell .practice-choice span{font-size:13px;color:var(--muted)}.studio-shell .practice-choice input{margin-top:3px}
+.studio-shell .practice-start{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 16px}.studio-shell .practice-start>.practice-choice,.studio-shell .practice-start>.practice-filters,.studio-shell .practice-start>.practice-feedback,.studio-shell .practice-start>.practice-button{grid-column:1/-1}
+.studio-shell .practice-start>.practice-button{justify-self:start;min-width:180px}
+.studio-shell .practice-filters{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:10px 0;margin-bottom:18px}.studio-shell .practice-filters summary{cursor:pointer;font-weight:600;font-size:14px;min-height:28px}.studio-shell .practice-filters summary small{font-weight:400;color:var(--muted)}
+.studio-shell .practice-filters fieldset{border:0;padding:0;margin:12px 0 0}.studio-shell .practice-filters legend{font-size:13px;font-weight:600;margin-bottom:4px}
+.studio-shell .practice-checks{display:flex;flex-wrap:wrap;gap:2px 16px}.studio-shell .practice-checks label{display:flex;gap:6px;align-items:center;min-height:36px;font-size:14px;cursor:pointer}.studio-shell .practice-checks input{width:16px;height:16px}.studio-shell .practice-checks small{color:var(--muted)}
+.studio-shell .practice-shortcuts{display:flex;gap:8px;flex-wrap:wrap}
+.studio-shell .practice-feedback{border:1px solid #c5d6b8;background:#edf3e4;padding:10px 12px;margin:10px 0;font-size:14px}.studio-shell .practice-error{border-color:#e3b9a8;background:#f8e8e2;color:#6f1d13}
+.studio-shell .practice-help{font-size:13px;color:var(--muted)}.studio-shell .practice-link{text-decoration:underline;text-underline-offset:3px}
+.studio-shell .practice-list{list-style:none;padding:0;margin:0}.studio-shell .practice-list li{display:flex;flex-direction:column;gap:2px;padding:10px 0}
+.studio-shell .quick-start{display:inline-flex;flex-direction:column;gap:6px}
+
+/* Session: one question at a time on the sheet, the bar pinned so the clock never leaves */
+.studio-shell .practice-bar{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;gap:12px 16px;flex-wrap:wrap;margin:-36px 0 20px;padding:20px 0 14px;background:var(--ground);border-bottom:1px solid var(--line)}
+.studio-shell .practice-bar h1{font-family:var(--serif);font-weight:400;font-size:1.75rem;letter-spacing:-.02em;line-height:1.15}.studio-shell .practice-bar h1 small{font-size:.6em;color:var(--muted)}
+.studio-shell .practice-bar .app-sub{margin-top:2px;font-size:14px}
+.studio-shell .practice-bar-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.studio-shell .practice-timer{font:400 22px var(--serif);font-variant-numeric:tabular-nums;padding:5px 12px;border:1px solid var(--line);border-radius:3px;background:var(--card);min-width:84px;text-align:center}.studio-shell .practice-timer-low{border-color:var(--bad);color:var(--bad);background:#f8e8e2}
+.studio-shell .practice-confirm{flex-basis:100%;display:flex;justify-content:space-between;align-items:center;gap:12px 20px;flex-wrap:wrap;padding:14px 16px;background:var(--lime-wash);border:1px solid #c9d79a}
+.studio-shell .practice-confirm p{font-size:14px;max-width:70ch}.studio-shell .practice-confirm strong{font-weight:600}.studio-shell .practice-confirm-actions{display:flex;gap:8px}
+.studio-shell .practice-layout{display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:32px;align-items:start}
+.studio-shell .practice-question{position:relative;overflow:hidden;background:var(--card);border:1px solid var(--line);border-top:3px solid var(--accent);padding:32px 36px;min-width:0}
+.studio-shell .practice-protected .practice-question,.app.studio-shell .practice-question{user-select:none;-webkit-user-select:none}
+.studio-shell .practice-watermark{position:absolute;inset:0;pointer-events:none;display:flex;flex-wrap:wrap;align-content:space-around;justify-content:space-around;gap:60px;opacity:.06;transform:rotate(-18deg) scale(1.3);font-size:13px;z-index:0}
+.studio-shell .practice-question>*:not(.practice-watermark){position:relative;z-index:1}
+.studio-shell .practice-stem{font-family:var(--serif);font-size:1.3125rem;line-height:1.55;white-space:pre-wrap;margin-bottom:24px;max-width:68ch}
+.studio-shell .practice-options{border:0;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+.studio-shell .practice-option{display:flex;align-items:stretch;border:1px solid var(--line);border-radius:3px;background:var(--card);transition:background .15s,border-color .15s,box-shadow .15s}
+.studio-shell .practice-option:hover{border-color:var(--accent)}.studio-shell .practice-option label{flex:1;display:flex;align-items:center;gap:14px;padding:10px 14px;min-height:54px;cursor:pointer}
+.studio-shell .practice-option input{position:absolute;opacity:0;pointer-events:none}.studio-shell .practice-option:has(input:focus-visible){outline:2px solid var(--accent);outline-offset:2px}
+.studio-shell .practice-letter{flex:none;width:30px;height:30px;display:grid;place-items:center;border:1px solid var(--line);border-radius:2px;font:400 17px var(--serif);background:var(--ground)}
+.studio-shell .practice-option-text{flex:1;white-space:pre-wrap;font-size:15px}.studio-shell .practice-share{font:400 15px var(--serif);color:var(--muted);font-variant-numeric:tabular-nums}
+.studio-shell .practice-option.is-selected{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}.studio-shell .practice-option.is-selected .practice-letter{background:var(--accent);border-color:var(--accent);color:#f6f5ef}
+.studio-shell .practice-option.is-struck .practice-option-text{text-decoration:line-through;color:var(--muted)}
+.studio-shell .practice-option.is-correct{background:#edf5e6;border-color:var(--good);box-shadow:inset 0 0 0 1px var(--good)}.studio-shell .practice-option.is-correct .practice-letter{background:var(--good);border-color:var(--good);color:#fff}
+.studio-shell .practice-option.is-wrong{background:#fbeee9;border-color:var(--bad)}.studio-shell .practice-option.is-wrong .practice-letter{background:var(--bad);border-color:var(--bad);color:#fff}
+.studio-shell .practice-options:disabled .practice-option label{cursor:default}.studio-shell .practice-options:disabled .practice-option:hover{border-color:var(--line)}
+.studio-shell .practice-options:disabled .practice-option.is-correct:hover{border-color:var(--good)}.studio-shell .practice-options:disabled .practice-option.is-wrong:hover{border-color:var(--bad)}
+.studio-shell .practice-strike{flex:none;width:44px;border:0;border-left:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer}.studio-shell .practice-strike:hover{color:var(--ink);background:var(--ground)}.studio-shell .practice-strike[aria-pressed=true]{background:var(--panel-2);color:var(--ink)}
+.studio-shell .practice-question form>.practice-button{margin-top:16px}
+.studio-shell .practice-confidence{display:flex;flex-wrap:wrap;gap:4px 18px;align-items:center;margin-top:18px}.studio-shell .practice-confidence legend{width:100%}.studio-shell .practice-confidence label{display:flex;gap:6px;align-items:center;min-height:36px;font-size:14px;cursor:pointer}
+.studio-shell .practice-explanation{margin-top:28px;padding-top:22px;border-top:1px solid var(--rule)}
+.studio-shell .practice-explanation h2{font:400 1.25rem var(--serif);letter-spacing:-.01em;margin:22px 0 8px}.studio-shell .practice-explanation h3{font-size:14px;font-weight:600;font-family:var(--sans);letter-spacing:0;margin:18px 0 6px}
+.studio-shell .practice-explanation ul{padding-left:20px;font-size:15px;max-width:68ch}.studio-shell .practice-explanation li+li{margin-top:4px}.studio-shell .practice-prose{white-space:pre-wrap;line-height:1.65;font-size:15px;max-width:68ch}
+.studio-shell .practice-verdict{font:400 1.625rem/1.2 var(--serif);letter-spacing:-.01em}.studio-shell .is-correct{color:var(--good)}.studio-shell .is-wrong{color:var(--bad)}.studio-shell .practice-option.is-correct,.studio-shell .practice-option.is-wrong{color:var(--ink)}
+.studio-shell .practice-badges{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 2px}.studio-shell .practice-badge{font-size:13px;padding:3px 9px;border:1px solid var(--line);border-radius:2px;background:var(--ground)}
+.studio-shell .practice-badge.is-hot{background:var(--lime);border-color:var(--lime);color:var(--accent);font-weight:600}.studio-shell .practice-badge.is-new{background:#e3f0dc;border-color:#e3f0dc;color:var(--good);font-weight:600}
+.studio-shell .practice-withdrawn{padding:24px;background:var(--ground);border:1px solid var(--line)}.studio-shell .practice-withdrawn h2{font:400 1.375rem var(--serif);margin-bottom:6px}
+.studio-shell .practice-pager{display:flex;justify-content:space-between;margin-top:28px;padding-top:12px;border-top:1px solid var(--line)}.studio-shell .practice-pager a{min-height:40px;display:inline-flex;align-items:center;font-size:14px;font-weight:600;text-decoration:none;padding:0 4px}.studio-shell .practice-pager a:hover{text-decoration:underline}
+.studio-shell .practice-navigator{border-top:1px solid var(--rule);padding-top:14px;position:sticky;top:110px}.studio-shell .practice-navigator h2{font:400 1.25rem var(--serif);letter-spacing:-.01em;margin-bottom:12px}
+.studio-shell .practice-navigator ol{list-style:none;padding:0;margin:0 0 12px;display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.studio-shell .practice-navigator a{display:grid;place-items:center;height:40px;border:1px solid var(--line);border-radius:2px;background:var(--card);text-decoration:none;font:400 15px var(--serif);font-variant-numeric:tabular-nums;position:relative;transition:border-color .15s}
+.studio-shell .practice-navigator a:hover{border-color:var(--accent)}
+.studio-shell .practice-navigator a.is-answered{background:var(--panel-2);border-color:var(--panel-2)}.studio-shell .practice-navigator a.is-flagged::after{content:'';position:absolute;top:4px;right:4px;width:7px;height:7px;border-radius:50%;background:#b5651d}
+.studio-shell .practice-navigator a[aria-current=page]{background:var(--accent);border-color:var(--accent);color:#f6f5ef}
+.studio-shell .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* Results: the score is the sheet, set like a marked paper */
+.studio-shell .scorecard{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));padding:0}
+.studio-shell .scorecard>div{display:flex;flex-direction:column;padding:22px 24px 20px;border-left:1px solid var(--line)}.studio-shell .scorecard>div:first-child{border-left:0}
+.studio-shell .scorecard .value{font:400 2.5rem/1 var(--serif);letter-spacing:-.02em;font-variant-numeric:tabular-nums}.studio-shell .scorecard .value small{font-size:.45em;color:var(--muted);letter-spacing:0}
+.studio-shell .scorecard .label{font-size:14px;font-weight:600;margin-top:8px}.studio-shell .scorecard .caption{font-size:13px;color:var(--muted);margin-top:2px}
+.studio-shell .review-table{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}.studio-shell .review-table th,.studio-shell .review-table td{padding:11px 8px;text-align:left;border-bottom:1px solid var(--line)}.studio-shell .review-table th{font-weight:500;color:var(--muted)}
+.studio-shell .review-table th:first-child,.studio-shell .review-table td:first-child{padding-left:0}.studio-shell .review-table th:last-child,.studio-shell .review-table td:last-child{padding-right:0}
+.studio-shell .review-table td.num,.studio-shell .review-table th.num{text-align:right}.studio-shell .review-table a{font-weight:600;text-decoration:none}.studio-shell .review-table a:hover{text-decoration:underline}.studio-shell .review-table td.is-blank{color:var(--muted)}
+.studio-shell .facts{list-style:none;margin:0;padding:0;font-size:14px}.studio-shell .facts li{display:flex;flex-direction:column;padding:12px 0;border-bottom:1px solid var(--line)}.studio-shell .facts span{color:var(--muted);font-size:13px}
+.studio-shell .panel .practice-shortcuts{margin-top:16px}
+
+/* Plans, security, checkout */
+.studio-shell .my-plans li{gap:4px}.studio-shell .plan-renew label{display:flex;gap:8px;align-items:center;min-height:40px;font-size:14px;cursor:pointer}.studio-shell .plan-renew input{width:18px;height:18px}
+.studio-shell .plan-row{flex-wrap:wrap}.studio-shell .security-panel{max-width:720px}
+.studio-shell .billing-confirm h1{font-family:var(--serif);font-weight:400;font-size:2.125rem;margin-bottom:10px}.studio-shell .billing-confirm .hero-description{font-size:15px;color:var(--muted);max-width:60ch}.studio-shell .billing-confirm .seo-actions{display:flex;gap:16px;align-items:center;margin-top:20px}
+.studio-shell .billing-confirm .button{display:inline-flex;min-height:40px;align-items:center;padding:9px 18px;border-radius:3px;background:var(--accent);color:#f6f5ef;font-weight:600;font-size:14px;text-decoration:none}
+
+/* Sessions and results: one sheet holding the whole record, ruled by month. */
+.studio-shell .practice-filters{display:flex;flex-wrap:wrap;gap:4px;margin:0 0 12px}
+.studio-shell .practice-filters a{font-size:13px;padding:5px 10px;border:1px solid var(--line);border-radius:3px;text-decoration:none;background:var(--card)}
+.studio-shell .practice-filters a small{color:var(--muted);font-variant-numeric:tabular-nums}.studio-shell .practice-filters a:hover{border-color:var(--accent)}
+.studio-shell .practice-filters a[aria-current=page]{background:var(--accent);border-color:var(--accent);color:#f6f5ef}.studio-shell .practice-filters a[aria-current=page] small{color:#c9d6cf}
+.studio-shell .practice-filters+.sheet{margin-top:12px}
+.studio-shell .history{padding-top:8px;padding-bottom:12px}
+.studio-shell .history-table td{vertical-align:top}.studio-shell .history-table tbody tr:last-child td{border-bottom:0}
+.studio-shell .history-table .hist-month th{font:400 1.125rem var(--serif);letter-spacing:-.01em;color:var(--ink);padding:26px 0 8px;border-bottom:1px solid var(--rule)}
+.studio-shell .history-table tbody:first-of-type .hist-month th{padding-top:14px}
+.studio-shell .history-table .hist-when{white-space:nowrap;color:var(--muted);width:1%;padding-right:20px}
+.studio-shell .history-table .hist-meta{display:block;font-size:13px;color:var(--muted);margin-top:2px}
+.studio-shell .hist-score{display:inline-flex;flex-direction:column;align-items:flex-end;font:400 20px/1.1 var(--serif)}
+.studio-shell .hist-score small{font:500 12px var(--sans);margin-top:3px}.studio-shell .hist-score .is-pass{color:var(--accent-2)}.studio-shell .hist-score .is-below{color:var(--muted)}
+.studio-shell .review-table a.hist-open{color:var(--accent);white-space:nowrap}
+.studio-shell .history-empty{padding:12px 0 8px}.studio-shell .history-empty h2{font:400 1.5rem var(--serif);letter-spacing:-.01em;margin-bottom:6px}.studio-shell .history-empty p{max-width:56ch;color:var(--muted)}
+.studio-shell .history-pages{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:16px;font-size:14px;color:var(--muted)}.studio-shell .history-pages a{font-weight:600;color:var(--accent)}
+/* Sessions and results: one sheet holding the whole record, ruled by month. */
+.studio-shell .practice-filters{display:flex;flex-wrap:wrap;gap:4px;margin:0 0 12px}
+.studio-shell .practice-filters a{font-size:13px;padding:5px 10px;border:1px solid var(--line);border-radius:3px;text-decoration:none;background:var(--card)}
+.studio-shell .practice-filters a small{color:var(--muted);font-variant-numeric:tabular-nums}.studio-shell .practice-filters a:hover{border-color:var(--accent)}
+.studio-shell .practice-filters a[aria-current=page]{background:var(--accent);border-color:var(--accent);color:#f6f5ef}.studio-shell .practice-filters a[aria-current=page] small{color:#c9d6cf}
+.studio-shell .practice-filters+.sheet{margin-top:12px}
+.studio-shell .history{padding-top:8px;padding-bottom:12px}
+.studio-shell .history-table td{vertical-align:top}.studio-shell .history-table tbody tr:last-child td{border-bottom:0}
+.studio-shell .history-table .hist-month th{font:400 1.125rem var(--serif);letter-spacing:-.01em;color:var(--ink);padding:26px 0 8px;border-bottom:1px solid var(--rule)}
+.studio-shell .history-table tbody:first-of-type .hist-month th{padding-top:14px}
+.studio-shell .history-table .hist-when{white-space:nowrap;color:var(--muted);width:1%;padding-right:20px}
+.studio-shell .history-table .hist-meta{display:block;font-size:13px;color:var(--muted);margin-top:2px}
+.studio-shell .hist-score{display:inline-flex;flex-direction:column;align-items:flex-end;font:400 20px/1.1 var(--serif)}
+.studio-shell .hist-score small{font:500 12px var(--sans);margin-top:3px}.studio-shell .hist-score .is-pass{color:var(--accent-2)}.studio-shell .hist-score .is-below{color:var(--muted)}
+.studio-shell .review-table a.hist-open{color:var(--accent);white-space:nowrap}
+.studio-shell .history-empty{padding:12px 0 8px}.studio-shell .history-empty h2{font:400 1.5rem var(--serif);letter-spacing:-.01em;margin-bottom:6px}.studio-shell .history-empty p{max-width:56ch;color:var(--muted)}
+.studio-shell .history-pages{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:16px;font-size:14px;color:var(--muted)}.studio-shell .history-pages a{font-weight:600;color:var(--accent)}
+@media print{.app.studio-shell{display:none}}
+@media (max-width:1100px){.app.studio-shell{grid-template-columns:220px minmax(0,1fr)}.studio-shell .app-canvas{padding-inline:28px}.studio-shell .span3{grid-column:span 6}.studio-shell .span9,.studio-shell .span8,.studio-shell .span4{grid-column:span 12}.studio-shell .scorecard{grid-template-columns:repeat(2,minmax(0,1fr))}.studio-shell .scorecard>div:nth-child(3){border-left:0}.studio-shell .scorecard>div:nth-child(n+3){border-top:1px solid var(--line)}}
+@media (max-width:860px){
+ .app.studio-shell{display:block}.studio-shell .app-side{display:none}
+ .studio-shell .app-phone{display:block;position:sticky;top:0;z-index:30;background:var(--ground);border-bottom:1px solid var(--line)}
+ .studio-shell .app-phone summary{list-style:none;display:flex;justify-content:space-between;align-items:center;height:48px;padding:0 16px;cursor:pointer}.studio-shell .app-phone summary::-webkit-details-marker{display:none}
+ .studio-shell .app-phone-title{font-weight:600;font-size:15px}.studio-shell .app-menu{font-size:14px;padding:6px 12px;border-radius:3px;background:var(--panel-2)}
+ .studio-shell .app-sheet{padding:16px}
+ .studio-shell .app-phone[open] .app-sheet{position:fixed;inset:48px 0 0;background:var(--ground);overflow-y:auto;display:flex;flex-direction:column;gap:24px}
+ .studio-shell .app-canvas{padding:20px 16px 56px}
+ .studio-shell .app-title h1,.studio-shell .app-greeting{font-size:1.625rem}
+ .studio-shell .sheet{padding:22px 18px}
+ .studio-shell .next{grid-template-columns:1fr;margin-bottom:32px}.studio-shell .next h2{font-size:1.5rem}.studio-shell .next-action .practice-button,.studio-shell .next-action .quick-start,.studio-shell .next-action .quick-start .practice-button{width:100%}
+ .studio-shell .grid12{gap:32px;margin-top:32px}.studio-shell .span6,.studio-shell .span3{grid-column:span 12}
+ .studio-shell .ways>li{grid-template-columns:1fr}.studio-shell .ways>li>.practice-ghost,.studio-shell .ways>li>.way-actions{justify-self:start}
+ .studio-shell .ways>li.is-arming{margin-inline:-16px}
+ .studio-shell .way-custom summary{grid-template-columns:1fr;gap:10px}.studio-shell .way-custom .way-toggle{justify-self:start}.studio-shell .way-custom details[open]>form{padding:16px;margin-inline:-16px;border-inline:0}
+ .studio-shell .practice-bar{top:48px;margin-top:-20px;padding:12px 0}.studio-shell .practice-bar h1{font-size:1.375rem}
+ .studio-shell .practice-layout{grid-template-columns:1fr}.studio-shell .practice-navigator{position:static;order:2}
+ .studio-shell .practice-start{grid-template-columns:1fr}.studio-shell .practice-choice{grid-template-columns:1fr}
+ .studio-shell .practice-question{padding:20px 16px;margin-inline:-16px;border-inline:0}.studio-shell .practice-stem{font-size:1.1875rem}
+ .studio-shell .scorecard>div{padding:16px}.studio-shell .scorecard .value{font-size:2rem}
+ .studio-shell .coverage li,.studio-shell .topic-bars li{grid-template-columns:96px minmax(0,1fr) 60px}
+ .studio-shell .history-table .hist-answered,.studio-shell .history-table .hist-time{display:none}.studio-shell .history-table .hist-when{padding-right:12px;font-size:13px}
+}

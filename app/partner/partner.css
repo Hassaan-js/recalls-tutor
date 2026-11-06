@@ -1,0 +1,44 @@
+/* Partner Portal: the Studio shell and controls (studio.css), plus the few pieces only partners need. */
+.partner-banner{padding:12px 14px;border:1px solid var(--line);border-left:3px solid var(--accent);background:var(--lime-wash);font-size:14px;margin:0 0 20px}
+.partner-banner-suspended{border-left-color:var(--bad);background:#f8e8e2;color:#6f1d13}
+.partner-figures{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:0 0 24px}
+.partner-figure{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--accent);padding:14px 16px;min-width:0}
+.partner-figure strong{display:block;font-family:Georgia,'Times New Roman',serif;font-size:32px;font-weight:400;line-height:1.1;font-variant-numeric:tabular-nums}
+.partner-figure span{display:block;font-size:13px;color:var(--muted);margin-top:4px}
+.partner-scroll{overflow-x:auto;margin:0 -2px;padding:0 2px}
+.partner-scroll .catalogue-table{min-width:560px}
+.partner-alerts{list-style:none;margin:0 0 24px;padding:0;display:grid;gap:8px}
+.partner-alerts li{display:flex;gap:12px;align-items:center;justify-content:space-between;padding:10px 14px;background:#fbf3dc;border:1px solid #e8d49a;font-size:14px}
+.partner-secret{margin:12px 0 16px;padding:12px 14px;background:var(--ink);color:#f6f5ef;border-radius:3px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.partner-secret code{font:13px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere;flex:1 1 280px;user-select:all}
+.partner-secret button{background:#f6f5ef;color:var(--ink);border:0;border-radius:3px;padding:6px 12px;font:600 13px var(--sans);cursor:pointer}
+.partner-results{list-style:none;margin:0 0 16px;padding:0;font-size:13px;max-height:220px;overflow:auto;border:1px solid var(--line)}
+.partner-results li{padding:6px 10px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:12px}
+.partner-results li:last-child{border-bottom:0}
+.partner-results .bad{color:var(--bad)}
+.partner-state{display:inline-block;font-size:12px;padding:2px 8px;border-radius:2px;background:var(--panel);white-space:nowrap}
+.partner-state-active{background:var(--lime);color:var(--accent);font-weight:600}
+.partner-state-invited{background:#eef1f6;color:#2c3e5c}
+.partner-state-revoked,.partner-state-expired{background:#efece6;color:var(--muted)}
+.partner-row-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.partner-row-actions select{font:13px var(--sans);padding:4px 6px}
+.partner-docs pre{background:var(--panel);border:1px solid var(--line);padding:12px 14px;overflow-x:auto;font:12.5px/1.55 ui-monospace,SFMono-Regular,Consolas,monospace;margin:8px 0 16px}
+.partner-docs code{font:13px ui-monospace,SFMono-Regular,Consolas,monospace}
+.partner-docs table code{white-space:nowrap}
+.partner-checks{display:flex;flex-wrap:wrap;gap:8px 18px;border:0;padding:0;margin:0 0 16px}
+.partner-checks legend{font-size:14px;font-weight:600;margin-bottom:6px;padding:0}
+.partner-checks label{display:flex;gap:6px;align-items:center;font-size:14px}
+.partner-empty{min-height:100vh;display:grid;place-items:center;padding:24px;background:#f6f5ef;color:#16261f}
+.partner-empty>div{max-width:520px}.partner-empty h1{font-size:40px;margin-bottom:12px}.partner-empty p{margin-top:10px;color:#55635c}.partner-empty a{text-decoration:underline}
+.join-card{max-width:520px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-top:3px solid var(--accent);padding:28px}
+.join-card h1{font-size:34px;margin-bottom:10px}
+.join-card p{color:var(--muted);margin-bottom:14px}
+@media (max-width:900px){.partner-figures{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.partner-row-actions input[inputmode=decimal],.partner-row-actions input[name=ipAllow]{width:96px;min-height:36px;padding:6px 8px;border:1px solid var(--line);border-radius:3px;background:#fff;font:14px var(--sans);color:var(--ink)}
+.partner-row-actions input[name=ipAllow]{width:220px}
+.students-form>.studio-link-button{justify-self:start}
+/* PART-2 white-label */
+.join-logo{display:block;max-height:40px;width:auto;margin:0 0 18px}
+.join-card .studio-button{background:var(--accent)}
+.join-platform{margin:22px 0 0!important;font-size:12.5px;color:var(--muted)}
+.partner-brand-logo{display:block;max-height:32px;width:auto;margin:0 0 10px}
